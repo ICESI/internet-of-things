@@ -27,16 +27,16 @@ handler.setFormatter(formatter)
 #adding the handler to the logger
 logger.addHandler(handler)
 
+@app.route("/api/v1.0/iot_sensors")
 @app.route("/api/v1.0")
 @app.route("/api")
-@app.route("/")
 def api_version():
 	logger.info('Showing mraa version')
 	return mraa.getVersion()
 
-@app.route("/api/v1.0/iot_sensors/led")
+@app.route("/api/v1.0/iot_sensors/leds/1")
 def set_led_status():
-	logger.info('Changing led status')
+	logger.info('Changing led 1 status')
 	if x_gpio.read() == 1:
 		x_gpio.write(0)
 		logger.debug('led status: %d', x_gpio.read())
@@ -46,9 +46,10 @@ def set_led_status():
 		logger.debug('led status: %d', x_gpio.read())
 		return "turned on"
 
-@app.route("/api/v1.0/iot_sensors/light")
+@app.route("/api/v1.0/iot_sensors/lights/1")
 def get_intensity_light():
 	try:
+		logger.info('Reading light 1 intensity')
 		print (x_aio.read())
 		print ("%.5f" % x_aio.readFloat())
 		logger.debug('the intensity of light is: %.5f', x_aio.readFloat())
@@ -57,13 +58,6 @@ def get_intensity_light():
 		print ("Are you sure you have an ADC?")
         	logger.debug('cannot read light intensity')
 	        return "error"
-
-@app.route("/api/v1.0/iot_sensors/virtual")
-def get_virtual_data():
-        logger.info('Reading virtual data')
-	sensor_value = random.random() 
-        logger.debug('button box status: %f', sensor_value)
-        return str(sensor_value) 
 
 if __name__ == "__main__":
 	#allow to make changes in the source code and test
