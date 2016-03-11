@@ -34,7 +34,7 @@ def api_version():
 	logger.info('Showing mraa version')
 	return mraa.getVersion()
 
-@app.route("/api/v1.0/iot_sensors/leds/1")
+@app.route("/api/v1.0/iot_sensors/lights/1")
 def set_led_status():
 	logger.info('Changing led 1 status')
 	if x_gpio.read() == 1:
@@ -46,7 +46,7 @@ def set_led_status():
 		logger.debug('led status: %d', x_gpio.read())
 		return "turned on"
 
-@app.route("/api/v1.0/iot_sensors/lights/1")
+@app.route("/api/v1.0/iot_sensors/luminance/1")
 def get_intensity_light():
 	try:
 		logger.info('Reading light 1 intensity')
