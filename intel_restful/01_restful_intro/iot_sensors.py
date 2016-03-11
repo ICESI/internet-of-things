@@ -2,16 +2,8 @@ from flask import Flask
 import logging
 
 #intel galileo libraries
-import mraa
 import time
-import random
-
-#prepare the gpio for output
-x_gpio = mraa.Gpio(8)
-x_gpio.dir(mraa.DIR_OUT)
-x_aio = mraa.Aio(0)
-
-print (mraa.getVersion())
+import mraa
 
 app = Flask(__name__)
 logging.basicConfig(level=logging.DEBUG)
@@ -27,36 +19,12 @@ handler.setFormatter(formatter)
 #adding the handler to the logger
 logger.addHandler(handler)
 
+@app.route("/api/v1.0/iot_sensors")
 @app.route("/api/v1.0")
 @app.route("/api")
-@app.route("/")
 def api_version():
 	logger.info('Showing mraa version')
 	return mraa.getVersion()
-
-@app.route("/api/v1.0/iot_sensors/led")
-def set_led_status():
-	logger.info('Changing led status')
-	if x_gpio.read() == 1:
-		x_gpio.write(0)
-		logger.debug('led status: %d', x_gpio.read())
-		return "turned off"
-	else:
-		x_gpio.write(1)
-		logger.debug('led status: %d', x_gpio.read())
-		return "turned on"
-
-@app.route("/api/v1.0/iot_sensors/light")
-def get_intensity_light():
-	try:
-		print (x_aio.read())
-		print ("%.5f" % x_aio.readFloat())
-		logger.debug('the intensity of light is: %.5f', x_aio.readFloat())
-        	return str(x_aio.read())
-	except:
-		print ("Are you sure you have an ADC?")
-        	logger.debug('cannot read light intensity')
-	        return "error"
 
 @app.route("/api/v1.0/iot_sensors/virtual")
 def get_virtual_data():
@@ -80,8 +48,7 @@ if __name__ == "__main__":
 	#allow to make changes in the source code and test
 	app.run('0.0.0.0',debug=True)
 
-
-# Review this
+# Get flask version
 #import flask
 #flask.__version__
 #http://flask.pocoo.org/docs/0.10/config/
