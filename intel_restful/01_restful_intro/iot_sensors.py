@@ -26,23 +26,23 @@ def api_version():
 	logger.info('Showing mraa version')
 	return mraa.getVersion()
 
-@app.route("/api/v1.0/iot_sensors/virtual")
-def get_virtual_data():
-        logger.info('Reading virtual data')
+@app.route("/api/v1.0/iot_sensors/humidity/1")
+def get_humidity_data():
+        logger.info('Reading virtual humidity data')
 	sensor_value = random.random() 
-        logger.debug('button box status: %f', sensor_value)
+        logger.debug('virtual humidity value : %f', sensor_value)
         return str(sensor_value) 
 
+@app.route("/api/v1.0/iot_sensors/<sensor_name>/")
+def get_sensors_by_type(sensor_name):
+        logger.info('listing sensors')
+        return 'listing sensors of type: ' + sensor_name
+
 @app.route("/api/v1.0/iot_sensors/<sensor_name>/<int:sensor_id>")
-def get_box(sensor_name,sensor_id):
+def get_sensors_by_typeid(sensor_name,sensor_id):
 	logger.info('Selecting a sensor by type and id')
 	sensor_id = str(sensor_id)
 	return 'you selected a sensor of type ' + sensor_name + ' and id ' + sensor_id
-
-@app.route("/api/v1.0/iot_sensors/<sensor_name>/")
-def get_sensor_information(sensor_name):
-	logger.info('listing sensors')
-	return 'listing sensors of type: ' + sensor_name
 
 if __name__ == "__main__":
 	#allow to make changes in the source code and test
