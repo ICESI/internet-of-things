@@ -26,7 +26,7 @@ def api_version():
 	logger.info('Showing mraa version')
 	return mraa.getVersion()
 
-@app.route("/api/v1.0/iot_sensors/humidity/1")
+@app.route("/api/v1.0/iot_sensors/hygrometers/1")
 def get_humidity_data():
         logger.info('Reading virtual humidity data')
 	sensor_value = random.random() 
