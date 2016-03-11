@@ -1,5 +1,6 @@
 from flask import Flask
 import logging
+import random
 
 #intel galileo libraries
 import time
