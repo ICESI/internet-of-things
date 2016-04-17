@@ -11,6 +11,6 @@ sqlite>.mode column
 sqlite> SELECT * FROM room;
 ```
 
-##Paths
+##Sqlite Paths
 * sqlite:///C:\databases\lightcontrol.db'
 * sqlite:///lightcontrol.db
