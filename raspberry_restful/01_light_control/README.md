@@ -8,7 +8,5 @@ sqlite> SELECT * FROM room;
 ```
 
 ##Paths
-absolute path ////
-sqlite:///C:\databases\lightcontrol.db'
-relative path ///
-sqlite:///lightcontrol.db
++sqlite:///C:\databases\lightcontrol.db'
++sqlite:///lightcontrol.db
