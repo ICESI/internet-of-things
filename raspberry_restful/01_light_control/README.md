@@ -12,5 +12,5 @@ sqlite> SELECT * FROM room;
 ```
 
 ##Paths
-+sqlite:///C:\databases\lightcontrol.db'
-+sqlite:///lightcontrol.db
+* sqlite:///C:\databases\lightcontrol.db'
+* sqlite:///lightcontrol.db
