@@ -1,3 +1,7 @@
+#Internet of Things www.icesi.edu.co/facultad_ingenieria/  
+
+#RaspberryPi - MRK1000
+
 ##Sqlite commands
 
 ```sh
