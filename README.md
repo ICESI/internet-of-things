@@ -1,5 +1,5 @@
 # Internet of Things  
-www.icesi.edu.cofacultad_ingenieria
+www.icesi.edu.co/facultad_ingenieria
 
 # Introduction
 
