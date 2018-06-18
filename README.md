@@ -1,6 +1,7 @@
-#Internet of Things www.icesi.edu.cofacultad_ingenieria
+# Internet of Things  
+www.icesi.edu.cofacultad_ingenieria
 
-#Introduction
+# Introduction
 
 This is the repository for the practices of ICESI university Internet of Things course. In this course students learn about the principles of internet of things and use of platforms for deploying applications
 
